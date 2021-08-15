@@ -682,7 +682,7 @@ int mods_apply(ezpp_t ez) {
 
   /* global multipliers */
   od_ar_hp_multiplier = 1;
-  if (ez->mods & MODS_HR) od_ar_hp_multiplier *= 1.2f;
+  if (ez->mods & MODS_HR) od_ar_hp_multiplier *= 1.3f;
   if (ez->mods & MODS_EZ) od_ar_hp_multiplier *= 0.5f;
 
   ez->od *= od_ar_hp_multiplier;
@@ -702,7 +702,7 @@ int mods_apply(ezpp_t ez) {
     : (5 + (AR5_MS - arms) / AR_MS_STEP2);
 
   cs_multiplier = 1;
-  if (ez->mods & MODS_HR) cs_multiplier = 1.1f;
+  if (ez->mods & MODS_HR) cs_multiplier = 1.2f;
   if (ez->mods & MODS_EZ) cs_multiplier = 0.5f;
   ez->cs *= cs_multiplier;
   ez->cs = al_max(0.0f, al_min(10.0f, ez->cs));
@@ -2116,9 +2116,9 @@ int pp_std(ezpp_t ez) {
 
   /* flashlight */
   if (ez->mods & MODS_FL) {
-    float fl_bonus = 0.3f + 0.3f * al_min(1.0f, ez->nobjects / 200.0f);
+    float fl_bonus = 0.4f + 0.4f * al_min(1.0f, ez->nobjects / 200.0f);
     if (ez->nobjects > 200) {
-      fl_bonus += 0.2f * al_min(1, (ez->nobjects - 200) / 300.0f);
+      fl_bonus += 0.4f * al_min(1, (ez->nobjects - 200) / 300.0f);
     }
     if (ez->nobjects > 500) {
       fl_bonus += 0.6f * (ez->nobjects - 500) / 1200.0f;
