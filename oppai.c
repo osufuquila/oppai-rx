@@ -2041,11 +2041,11 @@ int pp_std(ezpp_t ez) {
   float length_bonus = (
     0.95f +
     0.4f * al_min(1.0f, nobjects_over_2k) +
-    (ez->nobjects > 2000 ? (float)log10(nobjects_over_2k) * 0.5f : 0.0f)
+    (ez->nobjects > 2000 ? (float)log10(nobjects_over_2k) * 0.45f : 0.0f)
   );
-  float miss_penality = (float)pow(0.97f, ez->nmiss);
+  float miss_penality = (float)pow(0.87f, ez->nmiss);
   float combo_break = (
-    (float)pow(ez->combo, 0.8f) / (float)pow(ez->max_combo, 0.8f)
+    (float)pow(ez->combo, 0.727f) / (float)pow(ez->max_combo, 0.69f)
   );
   float ar_bonus;
   float final_multiplier;
@@ -2107,7 +2107,7 @@ int pp_std(ezpp_t ez) {
   ez->aim_pp *= ar_bonus;
 
   /* hidden */
-  hd_bonus = 0.90f;
+  hd_bonus = 0.87f;
   if (ez->mods & MODS_HD) {
     hd_bonus += 0.04f * (12.0f - ez->ar);
   }
@@ -2161,7 +2161,7 @@ int pp_std(ezpp_t ez) {
   ez->acc_pp *= al_min(1.15f, (float)pow(ncircles / 1000.0f, 0.3f));
 
   if (ez->mods & MODS_HD) ez->acc_pp *= 1.06f;
-  if (ez->mods & MODS_FL) ez->acc_pp *= 1.10f;
+  if (ez->mods & MODS_FL) ez->acc_pp *= 1.08f;
 
   /* total pp -------------------------------------------------------- */
   final_multiplier = 1.0f;
