@@ -2039,8 +2039,8 @@ int pp_std(ezpp_t ez) {
   int ncircles = ez->ncircles;
   float nobjects_over_2k = ez->nobjects / 2000.0f;
   float length_bonus = (
-    0.95f +
-    0.4f * al_min(1.0f, nobjects_over_2k) +
+    0.85f +
+    0.32f * al_min(0.93f, nobjects_over_2k) +
     (ez->nobjects > 2000 ? (float)log10(nobjects_over_2k) * 0.45f : 0.0f)
   );
   float miss_penality = (float)pow(0.87f, ez->nmiss);
@@ -2091,12 +2091,12 @@ int pp_std(ezpp_t ez) {
 
   /* high ar bonus */
   if (ez->ar > 10.33f) {
-    ar_bonus += 0.3f * (ez->ar - 10.33f);
+    ar_bonus += 0.23f * (ez->ar - 10.33f);
   }
 
   /* low ar bonus */
   else if (ez->ar < 8.0f) {
-    ar_bonus += 0.01f * (8.0f - ez->ar);
+    ar_bonus += 0.012f * (8.0f - ez->ar);
   }
 
   /* aim pp ---------------------------------------------------------- */
@@ -2107,7 +2107,7 @@ int pp_std(ezpp_t ez) {
   ez->aim_pp *= ar_bonus;
 
   /* hidden */
-  hd_bonus = 0.87f;
+  hd_bonus = 0.84f;
   if (ez->mods & MODS_HD) {
     hd_bonus += 0.04f * (12.0f - ez->ar);
   }
@@ -2116,7 +2116,7 @@ int pp_std(ezpp_t ez) {
 
   /* flashlight */
   if (ez->mods & MODS_FL) {
-    float fl_bonus = 0.4f + 0.4f * al_min(1.0f, ez->nobjects / 200.0f);
+    float fl_bonus = 0.32f + 0.33f * al_min(1.0f, ez->nobjects / 200.0f);
     if (ez->nobjects > 200) {
       fl_bonus += 0.4f * al_min(1, (ez->nobjects - 200) / 300.0f);
     }
@@ -2127,11 +2127,11 @@ int pp_std(ezpp_t ez) {
   }
 
   /* acc bonus (bad aim can lead to bad acc) */
-  acc_bonus = 0.4f + accuracy / 2.0f;
+  acc_bonus = 0.32f + accuracy / 2.0f;
 
   /* od bonus (high od requires better aim timing to acc) */
   od_squared = (float)pow(ez->od, 2);
-  od_bonus = 0.92f + od_squared / 2500.0f;
+  od_bonus = 0.84f + od_squared / 2500.0f;
 
   ez->aim_pp *= acc_bonus;
   ez->aim_pp *= od_bonus;

@@ -1,4 +1,4 @@
-Linux giereczeqq 5.4.0-1044-gcp #47~18.04.2-Ubuntu SMP Mon May 17 03:48:15 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+Linux gunnest663 4.15.0-143-generic #147-Ubuntu SMP Wed Apr 14 16:10:11 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 gcc
 -std=c89 -pedantic -Os -fno-strict-aliasing -Wall -ffunction-sections -fdata-sections -g0 -fno-unwind-tables -s -fno-asynchronous-unwind-tables -fno-stack-protector -Wl,--gc-sections,--build-id=none
 -lm
