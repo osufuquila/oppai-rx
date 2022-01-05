@@ -2169,7 +2169,7 @@ int pp_std(ezpp_t ez) {
   /* if (ez->mods & MODS_NF) final_multiplier *= 0.90f; */
   if (ez->mods & MODS_SO) final_multiplier *= 1.0f;
 
-  streams_nerf = ez->aim_pp / (ez->speed_pp); // stream players: go fuck yourself
+  streams_nerf = ez->aim_pp / (ez->speed_pp); /* stream players: go fuck yourself; error: C++ style comments are not allowed in ISO C90 */
   if (streams_nerf < 1.0f) {
     if (accuracy >= 0.99f) {
       ez->aim_pp *= 0.72f;
