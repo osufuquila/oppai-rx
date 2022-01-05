@@ -2165,7 +2165,7 @@ int pp_std(ezpp_t ez) {
   if (ez->mods & MODS_FL) ez->acc_pp *= 1.08f;
 
   /* total pp -------------------------------------------------------- */
-  final_multiplier = 1.0f;
+  final_multiplier = 0.9f;
   /* if (ez->mods & MODS_NF) final_multiplier *= 0.90f; */
   if (ez->mods & MODS_SO) final_multiplier *= 1.0f;
 
