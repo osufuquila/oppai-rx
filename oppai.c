@@ -2052,6 +2052,7 @@ int pp_std(ezpp_t ez) {
   float acc_bonus, od_bonus;
   float od_squared;
   float hd_bonus;
+  float streams_nerf;
 
   /* acc used for pp is different in scorev1 because it ignores sliders */
   float real_acc;
@@ -2168,6 +2169,20 @@ int pp_std(ezpp_t ez) {
   /* if (ez->mods & MODS_NF) final_multiplier *= 0.90f; */
   if (ez->mods & MODS_SO) final_multiplier *= 1.0f;
 
+  streams_nerf = ez->aim_pp / (ez->speed_pp); // stream players: go fuck yourself
+  if (streams_nerf < 1.0f) {
+    if (accuracy >= 0.99f) {
+      ez->aim_pp *= 0.79f;
+    } else if (accuracy >= 0.98f) {
+      ez->aim_pp *= 0.74f;
+    } else if (accuracy >= 0.97f) {
+      ez->aim_pp *= 0.76f;
+    } else {
+      ez->aim_pp *= 0.78f;
+    }
+}
+  
+  
   ez->pp = (float)(
     pow(
       pow(ez->aim_pp, 1.20f) +
