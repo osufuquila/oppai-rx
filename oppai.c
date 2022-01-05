@@ -2172,15 +2172,15 @@ int pp_std(ezpp_t ez) {
   streams_nerf = ez->aim_pp / (ez->speed_pp); // stream players: go fuck yourself
   if (streams_nerf < 1.0f) {
     if (accuracy >= 0.99f) {
-      ez->aim_pp *= 0.79f;
+      ez->aim_pp *= 0.72f;
     } else if (accuracy >= 0.98f) {
-      ez->aim_pp *= 0.74f;
+      ez->aim_pp *= 0.66f;
     } else if (accuracy >= 0.97f) {
-      ez->aim_pp *= 0.76f;
+      ez->aim_pp *= 0.68f;
     } else {
-      ez->aim_pp *= 0.78f;
+      ez->aim_pp *= 0.7f;
     }
-}
+  }
   
   
   ez->pp = (float)(
